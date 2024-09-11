@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/03/24 12:04:44 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/10 13:16:39 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <libft.h>
+#include <ft_list.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    (void)args;
+	t_list	*ret;
+	t_list	*temp;
+
+	ret = NULL;
+	if (!lst)
+		return (NULL);
+	while (lst != NULL)
+	{
+		temp = ft_lstnew(f(lst->content));
+		if (!temp)
+		{
+			if (!ret)
+				return (NULL);
+			ft_lstclear(&ret, del);
+		}
+		lst = lst->next;
+		ft_lstadd_back(&ret, temp);
+	}
+	return (ret);
 }

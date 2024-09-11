@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/02/05 19:19:20 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:11:50 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <ft_memory.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-    (void)args;
+	unsigned char	*str_aux;
+	unsigned char	c_aux;
+	size_t			i;
+
+	str_aux = (unsigned char *)str;
+	c_aux = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (str_aux[i] == c_aux)
+		{
+			return ((void *)str + i);
+		}
+		i++;
+	}
+	return (NULL);
 }

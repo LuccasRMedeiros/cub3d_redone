@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   pf_delfspec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/04/13 18:40:58 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:06:06 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
+** del_fspec anullates each data contained in each part of the structure, then -
+** free the pointer and do not return.
 */
 
-#include "cub3d_error.h"
+#include <ft_fprintf.h>
 
-void	do_nothing(int args, ...)
+void	pf_delfspec(t_fspec **fspec)
 {
-    (void)args;
+	t_fspec	*del;
+	char	*dt;
+
+	del = *fspec;
+	dt = del->dt;
+	free(dt);
+	del->init = false;
+	del->fs = '\0';
+	del->w = 0;
+	del->p = false;
+	del->l = 0;
+	del->s = '\0';
+	del->dt = NULL;
+	del->sig = '\0';
+	del->sz = 0;
+	free(del);
 }

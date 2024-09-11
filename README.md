@@ -1,7 +1,11 @@
-## CUB3D Redone
+# CUB3D
 
-A raycasting engine made after the 42 project "Cub3d"
+This project was initially developed in 2021, when the basic project had to
+include sprites. This is not the version submitted, and contain some problems.
 
-If you are a 42 student, and happened to find this repo looking for a reference,
-go to this page https://github.com/LuccasRMedeiros/cub3d, and you may find some
-help.
+Also it was corrected to build on Debian 12, without following 42 norms. If you
+are a student, you might find some help in this code, but i also recomend other
+projects that helped me in the past:
+
+[Paula Hemsi's Cub3D](https://github.com/paulahemsi/cub3d)\
+[Clarissa Cristósomo's Cub3D](https://github.com/clacrisostomo/42_cursus_cub3d)

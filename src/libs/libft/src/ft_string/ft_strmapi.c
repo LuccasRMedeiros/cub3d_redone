@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/02/26 12:13:45 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:14:18 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <ft_string.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    (void)args;
+	char	*fstr;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	fstr = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!fstr)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		fstr[i] = f(i, s[i]);
+		i++;
+	}
+	fstr[i] = '\0';
+	return (fstr);
 }

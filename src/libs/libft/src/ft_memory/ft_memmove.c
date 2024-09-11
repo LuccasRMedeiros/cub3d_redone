@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/02/05 16:24:00 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:12:02 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <ft_memory.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-    (void)args;
+	unsigned char	*dst_aux;
+	unsigned char	*src_aux;
+
+	dst_aux = (unsigned char *)dst;
+	src_aux = (unsigned char *)src;
+	if ((!src && !dst) || !n)
+		return (dst);
+	if (src_aux < dst_aux)
+		while (n--)
+			dst_aux[n] = src_aux[n];
+	else
+	{
+		ft_memcpy(dst, src, n);
+	}
+	return (dst);
 }

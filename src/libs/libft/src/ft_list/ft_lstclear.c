@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/03/23 12:04:30 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:07:52 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <ft_list.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-    (void)args;
+	t_list	*aux;
+	t_list	*holder;
+
+	if (*lst == NULL)
+		return ;
+	aux = *lst;
+	while (aux != NULL)
+	{
+		del(aux->content);
+		holder = aux->next;
+		free(aux);
+		aux = holder;
+	}
+	*lst = NULL;
 }

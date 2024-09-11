@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/02/11 16:21:59 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/11 17:11:42 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <ft_memory.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+void	*ft_calloc(size_t n_itens, size_t size)
 {
-    (void)args;
+	void	*temp;
+
+	temp = malloc(n_itens * size);
+	if (!temp)
+		return (NULL);
+	ft_bzero(temp, n_itens * size);
+	return (temp);
 }

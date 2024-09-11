@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_error_do_nothing.c                           :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrocigno <lrocigno@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 10:26:17 by lrocigno          #+#    #+#             */
-/*   Updated: 2021/07/09 10:32:05 by lrocigno         ###   ########.fr       */
+/*   Created: 2021/03/24 10:24:55 by lrocigno          #+#    #+#             */
+/*   Updated: 2021/05/10 13:16:34 by lrocigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** It is a placeholder. Prints a blue cube in stdout
-** Can be called to help structuring a program part a keep compiling it.
-*/
+#include <libft.h>
+#include <ft_list.h>
 
-#include "cub3d_error.h"
-
-void	do_nothing(int args, ...)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    (void)args;
+	t_list	*aux;
+
+	if (lst == NULL)
+		return ;
+	aux = lst;
+	while (aux != NULL)
+	{
+		f(aux->content);
+		aux = aux->next;
+	}
 }
